@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                // Compile the Java code
+                sh 'javac HelloWorld.java'
+            }
+        }
+        stage('Test') {
+            steps {
+                // Run unit tests (if any)
+                echo 'No tests for this simple example'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Nothing to deploy for this example
+                echo 'No deployment for this simple example'
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Clean up actions, if needed
+        }
+        success {
+            // Actions to be performed on successful build
+            echo "Pipeline completed successfully!"
+        }
+        failure {
+            // Actions to be performed on build failure
+            echo "Pipeline failed!"
+        }
+    }
+}
